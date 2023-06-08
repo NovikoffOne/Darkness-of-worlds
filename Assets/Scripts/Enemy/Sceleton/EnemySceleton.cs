@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(SceletonCharacteristics))]
+[RequireComponent(typeof(DieSceletonTransition))]
+
 public class EnemySceleton : EnemyEnity
 {
     #region Animation string to hash

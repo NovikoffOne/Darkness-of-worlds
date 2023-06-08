@@ -1,23 +1,26 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell1 : Spell
+[RequireComponent(typeof(AnimationState))]
+
+public class HundredKnivesSpell : Spell
 {
     [SerializeField] private GameObject _spellPrefab;
+    [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _coolDownSkill1 = 5f;
-    [SerializeField] private float _direction = 5;
+    [SerializeField] private float _damage = 50f;
 
-    private GameObject _spell;
     private WaitForSeconds _waitFor;
 
-    private float _damage = 100f;
     private bool _isUsed;
 
     private void Start()
     {
-        _coolDownSkill1 = 5f;
         _animationState = GetComponent<AnimationState>();
+
         _waitFor = new WaitForSeconds(_coolDownSkill1);
+
         _isUsed = false;
     }
 
@@ -25,19 +28,19 @@ public class Spell1 : Spell
     {
         if (_isUsed == false)
         {
-            _animationState.PlaySkill1();
+            Vector3 direction = transform.forward + transform.position;
 
-            Vector3 direction = _direction * transform.forward;
+            _animationState.PlaySkill2();
 
-            _spell = Instantiate(_spellPrefab, transform.position + direction, transform.rotation);
+            var skill = Instantiate(_spellPrefab, _spawnPoint.position, transform.rotation);
+
+            var TryToDoDamage = skill.GetComponent<TryToDoDamageHundreadKnives>();
+
+            TryToDoDamage.Init(this.transform);
 
             _isUsed = true;
 
             StartCoroutine(StartCoolDownTimer());
-        }
-        else
-        {
-            return;
         }
     }
 
@@ -51,10 +54,5 @@ public class Spell1 : Spell
         yield return _waitFor;
 
         _isUsed = false;
-    }
-
-    public void DestroyObjectInScen()
-    {
-        Destroy(_spell.gameObject);
     }
 }

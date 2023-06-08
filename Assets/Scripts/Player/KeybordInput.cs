@@ -62,7 +62,8 @@ public class KeybordInput : MonoBehaviour
 
         Vector3 directon = new Vector3(_valueX * _speed * Time.deltaTime, 0, _valueY * _speed * Time.deltaTime);
 
-        if(!_animator.GetBool(_animationState.LightAttack) && !_animator.GetBool(_animationState.StrongAttack) && !_animationState.AnimationIsPlaying)
+        if(!_animator.GetBool(_animationState.LightAttack) && !_animator.GetBool(_animationState.StrongAttack) 
+            && !_animationState.AnimationIsPlaying)
             _characterController.Move(directon);
         
         TurnInDirectionOfTravel(directon);

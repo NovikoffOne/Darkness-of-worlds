@@ -25,7 +25,6 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         SetWave(_currentNumberWave);
-        
     }
 
     private void Update()
@@ -77,7 +76,8 @@ public class Spawner : MonoBehaviour
 
     private Vector3 AssignPosition()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(_minSpawnPositionX, _maxSpawnPositionX), 0, Random.Range(_minSpawnPositionZ, _maxSpawnPositionZ));
+        Vector3 spawnPosition = new Vector3(Random.Range(_minSpawnPositionX, _maxSpawnPositionX), 0, 
+            Random.Range(_minSpawnPositionZ, _maxSpawnPositionZ));
         return spawnPosition;
     }
 }

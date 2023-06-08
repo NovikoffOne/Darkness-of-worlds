@@ -1,20 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell2 : Spell
+[RequireComponent(typeof(AnimationState))]
+
+public class SwordsEarthSpell : Spell
 {
     [SerializeField] private GameObject _spellPrefab;
-    [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _coolDownSkill1 = 5f;
-    [SerializeField] private float _damage = 50f;
+    [SerializeField] private float _direction = 5;
 
+    private GameObject _spell;
     private WaitForSeconds _waitFor;
 
+    private float _damage = 100f;
     private bool _isUsed;
 
     private void Start()
     {
+        _coolDownSkill1 = 5f;
         _animationState = GetComponent<AnimationState>();
         _waitFor = new WaitForSeconds(_coolDownSkill1);
         _isUsed = false;
@@ -24,17 +27,22 @@ public class Spell2 : Spell
     {
         if (_isUsed == false)
         {
-            Vector3 direction = transform.forward + transform.position;
+            _animationState.PlaySkill1();
 
-            _animationState.PlaySkill2();
+            Vector3 direction = _direction * transform.forward;
 
-            var skill = Instantiate(_spellPrefab, _spawnPoint.position, transform.rotation);
+            _spell = Instantiate(_spellPrefab, transform.position + direction, transform.rotation);
 
-           // skill.GetComponent<SpellControlls2>().GoTarget(direction);
+            var zoneSwordsEarth = _spell.GetComponentInChildren<KillZoneSwordsEarth>();
+            zoneSwordsEarth.Init(transform);
 
             _isUsed = true;
 
             StartCoroutine(StartCoolDownTimer());
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -48,5 +56,10 @@ public class Spell2 : Spell
         yield return _waitFor;
 
         _isUsed = false;
+    }
+
+    public void DestroyObjectInScen()
+    {
+        Destroy(_spell.gameObject);
     }
 }

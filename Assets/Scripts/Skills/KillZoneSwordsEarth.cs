@@ -2,31 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellControlls : MonoBehaviour
+[RequireComponent(typeof(DestructTimer))]
+
+public class KillZoneSwordsEarth : MonoBehaviour
 {
     [SerializeField] private float _delay = 3f;
     
-    private Spell1 _spell;
-
-    private float _timer;
+    private SwordsEarthSpell _spell;
+    private DestructTimer _destructTimer;
 
     private void Start()
     {
-        _spell = FindObjectOfType<Spell1>().GetComponent<Spell1>();
-
-        _timer = _delay;
-    }
-
-    private void Update()
-    {
-        _timer -= Time.deltaTime;
-
-        if (_timer <= 0)
-        {
-            _spell.DestroyObjectInScen();
-
-            Destroy(gameObject);
-        }
+        _destructTimer = GetComponent<DestructTimer>();
+        _destructTimer.StartTimer(_delay);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,5 +27,10 @@ public class SpellControlls : MonoBehaviour
         {
             _spell.ApllyDamage(enemy);
         }
+    }
+
+    public void Init(Transform spell)
+    {
+        _spell = spell.GetComponent<SwordsEarthSpell>();
     }
 }

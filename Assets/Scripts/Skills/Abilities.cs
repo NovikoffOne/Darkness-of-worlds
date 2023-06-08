@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Spell1))]
-[RequireComponent(typeof(Spell2))]
-[RequireComponent(typeof(Spell3))]
+[RequireComponent(typeof(SwordsEarthSpell))]
+[RequireComponent(typeof(HundredKnivesSpell))]
+[RequireComponent(typeof(CircleOfFireSpell))]
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(AnimationState))]
 
 public class Abilities : MonoBehaviour
 {
@@ -20,9 +22,9 @@ public class Abilities : MonoBehaviour
     private bool _isStartRealoadHealingValue = false;
     #endregion
 
-    private Spell _spell1;
-    private Spell _spell2;
-    private Spell _spell3;
+    private Spell _swordsEarthSpell;
+    private Spell _hundredKnivesSpell;
+    private Spell _circleOfFireSpell;
 
     private void Start()
     {
@@ -30,9 +32,9 @@ public class Abilities : MonoBehaviour
 
         _animationState = GetComponent<AnimationState>();
 
-        _spell1 = GetComponent<Spell1>();
-        _spell2 = GetComponent<Spell2>();
-        _spell3 = GetComponent<Spell3>();
+        _swordsEarthSpell = GetComponent<SwordsEarthSpell>();
+        _hundredKnivesSpell = GetComponent<HundredKnivesSpell>();
+        _circleOfFireSpell = GetComponent<CircleOfFireSpell>();
     }
 
     private void Update()
@@ -76,16 +78,16 @@ public class Abilities : MonoBehaviour
 
     public void AttackSkill1()
     {
-        _spell1.Use();
+        _swordsEarthSpell.Use();
     }
 
     public void AttackSkill2()
     {
-        _spell2.Use();
+        _hundredKnivesSpell.Use();
     }
 
     public void AttackSkill3()
     {
-        _spell3.Use();
+        _circleOfFireSpell.Use();
     }
 }
