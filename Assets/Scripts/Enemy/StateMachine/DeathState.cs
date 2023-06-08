@@ -5,11 +5,11 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class DeathState : State
 {
-    private IEnemy _owner;
+    private EnemyEnity _owner;
 
     private void Awake()
     {
-        _owner = GetComponent<IEnemy>();
+        _owner = GetComponent<EnemyEnity>();
     }
 
     private void OnEnable()

@@ -4,20 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyMaw))]
 
-public class DieMawTransition : Transition
+public class DieMawTransition : DieTransition
 {
-    private EnemyMaw _owner;
-
-    private void Awake()
+    protected override void Awake()
     {
         _owner = GetComponent<EnemyMaw>();
-    }
-
-    public void CheckHealth()
-    {
-        if (_owner.CurrentHealth <= 0)
-        {
-            NeedTransit = true;
-        }
     }
 }

@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
     private void InstantiateEnemy()
     {
         int index = Random.Range(0, _currentWave.Template.Length);
-        IEnemy enemy = Instantiate(_currentWave.Template[index], AssignPosition(), _spawnPoint.rotation, _spawnPoint).GetComponent<IEnemy>();
+        EnemyEnity enemy = Instantiate(_currentWave.Template[index], AssignPosition(), _spawnPoint.rotation, _spawnPoint).GetComponent<EnemyEnity>();
         enemy.Init(_player);
     }
 

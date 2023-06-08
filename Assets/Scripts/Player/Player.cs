@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(IEnemy target)
+    public void ApplyDamage(EnemyEnity target)
     {
         if (_playerDead == false)
             target.TakeDamage(_meleeDamage);

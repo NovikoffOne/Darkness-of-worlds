@@ -3,17 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(SceletonCharacteristics))]
-
-public class EnemySceleton : MonoBehaviour, IEnemy
+public class EnemySceleton : EnemyEnity
 {
-    [SerializeField] private Player _target;
-
-    private Characteristics _characteristics;
-    private DieTransition _dieTransition;
-
-    private float _currentHealth;
-
     #region Animation string to hash
 
     private int _idleAnimation = Animator.StringToHash("Idle");
@@ -22,13 +13,7 @@ public class EnemySceleton : MonoBehaviour, IEnemy
     public int AttackAnimation => _attackAnimation;
     public int IdleAnimation => _idleAnimation;
 
-
     #endregion
-
-    Player IEnemy.Target => _target;
-    public float CurrentHealth => _currentHealth;
-
-    public event UnityAction<float, float> HealthChanged;
 
     private void Start()
     {
@@ -37,29 +22,23 @@ public class EnemySceleton : MonoBehaviour, IEnemy
         _currentHealth = _characteristics.MaxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
-
-        HealthChanged?.Invoke(_currentHealth, _characteristics.MaxHealth);
-
-        _dieTransition.CheckHealth();
+        base.TakeDamage(damage);
     }
 
-    public void Death()
+    public override void Death()
     {
-        gameObject.SetActive(false);
-
-        var ragdoll = Instantiate(_characteristics.Ragdoll, transform.position, transform.rotation);
+        base.Death();
     }
 
-    public void ApplyDamage(Player player)
+    public override void ApplyDamage(Player player)
     {
-        player.TakeDamage(_characteristics.Damage);
+        base.ApplyDamage(player);
     }
 
-    public void Init(Player target)
+    public override void Init(Player target)
     {
-        _target = target;
+        base.Init(target);
     }
 }

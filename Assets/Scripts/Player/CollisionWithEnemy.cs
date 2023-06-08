@@ -19,7 +19,7 @@ public class CollisionWithEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<IEnemy>(out IEnemy enemy))
+        if(other.TryGetComponent<EnemyEnity>(out EnemyEnity enemy))
         {
             _player.ApplyDamage(enemy);
             var effect = Instantiate(_hitParctical, _hitPoint.position, _hitPoint.rotation);

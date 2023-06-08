@@ -2261,8 +2261,8 @@ GameObject:
   - component: {fileID: 1589217473763219444}
   - component: {fileID: 1589217473763219441}
   - component: {fileID: 1589217473763219445}
-  - component: {fileID: 1589217473763219446}
   - component: {fileID: 2721283300830486180}
+  - component: {fileID: 5650060916479157781}
   m_Layer: 0
   m_Name: EnemySceleton
   m_TagString: Untagged
@@ -2359,7 +2359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0a5d654691608498d1e720cf91057a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
 --- !u!114 &1589217473763219443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2405,7 +2404,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 1589217473763219441}
   - {fileID: 1589217473763219445}
-  - {fileID: 1589217473763219446}
+  - {fileID: 5650060916479157781}
 --- !u!114 &1589217473763219438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2421,7 +2420,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 1589217473763219445}
   - {fileID: 1589217473763219444}
-  - {fileID: 1589217473763219446}
+  - {fileID: 5650060916479157781}
 --- !u!114 &1589217473763219442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,7 +2436,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 1589217473763219441}
   - {fileID: 1589217473763219444}
-  - {fileID: 1589217473763219446}
+  - {fileID: 5650060916479157781}
 --- !u!114 &1589217473763219447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,19 +2489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1589217473763219442}
---- !u!114 &1589217473763219446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6109014614489040872}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b67671626078140b17f9cdb4b6082c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetState: {fileID: 1589217473763219447}
 --- !u!114 &2721283300830486180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2518,6 +2504,19 @@ MonoBehaviour:
   _particalePrefab: {fileID: 8525781205505089108, guid: b1c102c44e7405a40a4cd4a3d6a2091f, type: 3}
   _delay: 3
   _offset: 2.5
+--- !u!114 &5650060916479157781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6109014614489040872}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04b77c24e98f7045bbbcad331c44b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 1589217473763219447}
 --- !u!1 &6343036114960975107
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,5 +15,5 @@ public abstract class Spell : MonoBehaviour
 
     public abstract void Use();
 
-    public abstract void ApllyDamage(IEnemy target);
+    public abstract void ApllyDamage(EnemyEnity target);
 }

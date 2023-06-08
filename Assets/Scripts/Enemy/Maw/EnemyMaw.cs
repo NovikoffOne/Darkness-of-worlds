@@ -6,16 +6,12 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Characteristics))]
 [RequireComponent(typeof(DieMawTransition))]
 
-public class EnemyMaw : MonoBehaviour, IEnemy
+public class EnemyMaw : EnemyEnity
 {
-    private Characteristics _characteristics;
-    private DieMawTransition _dieTransition;
-    private Player _target;
     private Animator _animator;
 
-    private float _currentHealth;
-
     #region Animation string to hash
+
     private int _idleAnimation = Animator.StringToHash("Idle");
     private int _rangeAttackAnimation = Animator.StringToHash("RangeAttack");
     private int _meleeAttackAnimation = Animator.StringToHash("MeleeAttack");
@@ -23,13 +19,8 @@ public class EnemyMaw : MonoBehaviour, IEnemy
     public int MeleeAttackAnimation => _meleeAttackAnimation;
     public int RangeAttackAnimation => _rangeAttackAnimation;
     public int IdleAnimation => _idleAnimation;
+    
     #endregion
-
-    public float CurrentHealth => _currentHealth;
-
-    Player IEnemy.Target { get => _target;}
-
-    public event UnityAction<float, float> HealthChanged;
 
     private void Start()
     {
@@ -38,29 +29,6 @@ public class EnemyMaw : MonoBehaviour, IEnemy
         _dieTransition = GetComponent<DieMawTransition>();
 
         _currentHealth = _characteristics.MaxHealth;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        _currentHealth -= damage;
-
-        HealthChanged?.Invoke(_currentHealth, _characteristics.MaxHealth);
-
-        _dieTransition.CheckHealth();
-    }
-
-    public void Death()
-    {
-        gameObject.SetActive(false);
-
-        var ragdoll = Instantiate(_characteristics.Ragdoll, transform.position, transform.rotation);
-
-        Destroy(this.gameObject);
-    }
-
-    public void ApplyDamage(Player player)
-    {
-        player.TakeDamage(_characteristics.Damage);
     }
 
     public void Shoot()
@@ -80,11 +48,6 @@ public class EnemyMaw : MonoBehaviour, IEnemy
             return true;
 
         return false;
-    }
-
-    public void Init(Player target)
-    {
-        _target = target;
     }
 
     private void LookAtTarget()

@@ -36,7 +36,7 @@ public class SpellControlls2 : MonoBehaviour
         {
             return;
         }
-        else if (other.TryGetComponent<IEnemy>(out IEnemy enemy))
+        else if (other.TryGetComponent<EnemyEnity>(out EnemyEnity enemy))
         {
             _spell.ApllyDamage(enemy);
             Destroy(gameObject);

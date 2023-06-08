@@ -2531,6 +2531,7 @@ MonoBehaviour:
   _waves:
   - Template:
     - {fileID: 6109014614489040872, guid: 73df770b58e867248baf008101ccab2a, type: 3}
+    - {fileID: 6339116044160219207, guid: 1e673f179be0eba46b6191cf977695d0, type: 3}
     MaxDelay: 3
     MinDelay: 1
     Count: 4
@@ -4163,12 +4164,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1400878454}
   - {fileID: 689048770}
   - {fileID: 895474014}
   - {fileID: 2010375700}
   - {fileID: 1085036982}
   - {fileID: 749530836}
+  - {fileID: 1400878454}
   - {fileID: 638910026}
   - {fileID: 1195397542}
   m_Father: {fileID: 643651196}

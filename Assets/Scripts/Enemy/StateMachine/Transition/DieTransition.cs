@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemySceleton))]
-
-public class DieTransition : Transition
+public abstract class DieTransition : Transition
 {
-    private EnemySceleton _owner;
+    protected EnemyEnity _owner;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _owner = GetComponent<EnemySceleton>();
     }

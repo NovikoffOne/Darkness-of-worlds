@@ -7,11 +7,11 @@ public class CollisionWithPlayer : MonoBehaviour
     [SerializeField] private Transform _hitPoint;
     [SerializeField] private GameObject _hitParticle;
 
-    private IEnemy _owner;
+    private EnemyEnity _owner;
 
     private void Start()
     {
-        _owner = GetComponentInParent<IEnemy>();
+        _owner = GetComponentInParent<EnemyEnity>();
     }
 
     private void OnTriggerEnter(Collider other)

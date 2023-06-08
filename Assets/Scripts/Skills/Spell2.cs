@@ -38,7 +38,7 @@ public class Spell2 : Spell
         }
     }
 
-    public override void ApllyDamage(IEnemy target)
+    public override void ApllyDamage(EnemyEnity target)
     {
         target.TakeDamage(_damage);
     }

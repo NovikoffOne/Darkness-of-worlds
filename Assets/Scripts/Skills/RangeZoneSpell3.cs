@@ -13,7 +13,7 @@ public class RangeZoneSpell3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<IEnemy>(out IEnemy enemy))
+        if(other.TryGetComponent<EnemyEnity>(out EnemyEnity enemy))
         {
             _spell.ApllyDamage(enemy);
         }

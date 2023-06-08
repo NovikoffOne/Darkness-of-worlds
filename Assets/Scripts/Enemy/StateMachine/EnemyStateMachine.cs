@@ -13,7 +13,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Awake()
     {
-        _target = GetComponent<IEnemy>().Target;
+        _target = GetComponent<EnemyEnity>().Target;
 
         if(_target == null)
             _target = FindObjectOfType<Player>();
