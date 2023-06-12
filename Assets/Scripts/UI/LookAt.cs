@@ -10,7 +10,7 @@ public class LookAt : MonoBehaviour
     {
         if(_target == null)
         {
-            _target = FindObjectOfType<FollowThePlayer>().GetComponent<Transform>();
+            _target = FindObjectOfType<PlayerFollow>().transform;
         }
     }
 

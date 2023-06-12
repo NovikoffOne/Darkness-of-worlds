@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowThePlayer : MonoBehaviour
+public class PlayerFollow : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     [SerializeField] private Vector3 _offset;

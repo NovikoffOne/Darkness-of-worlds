@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class DestructTimer : MonoBehaviour
 {
-    private float _timer = 0;
-
-    private void Update()
-    {
-        if (_timer < 0)
-            return;
-        
-        _timer -= Time.deltaTime;
-
-        if (_timer <= 0)
-            Destroy(this.gameObject);
-    }
+    private WaitForSeconds _wait;
 
     public void StartTimer(float time)
     {
-        _timer = time;
+        _wait = new WaitForSeconds(time);
+
+        StartCoroutine(PlayTimer());
+    }
+
+    private IEnumerator PlayTimer()
+    {
+        yield return _wait;
+
+        Destroy(this.gameObject);
     }
 }
