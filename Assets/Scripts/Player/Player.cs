@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AnimationState))]
+
 public class Player : MonoBehaviour
 {
     #region Variabls

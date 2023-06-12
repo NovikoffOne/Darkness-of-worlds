@@ -12,13 +12,17 @@ using UnityEngine.Events;
 
 public class Abilities : MonoBehaviour
 {
+
     private Player _player;
     private AnimationState _animationState;
 
     #region HillVariables
     [SerializeField] private float _recoveryTreatment = 5f;
     [SerializeField] private float _waitForSecondsRecoveryTreatment = 1f;
+    [SerializeField] private float _waitForSecondsStopParticle = 3f;
 
+    [SerializeField] private ParticleSystem _healPartical;
+    
     private bool _isStartRealoadHealingValue = false;
     #endregion
 
@@ -54,6 +58,9 @@ public class Abilities : MonoBehaviour
         {
             _animationState.PlayHealingPlayAnimation();
 
+            _healPartical.gameObject.SetActive(true);
+            StartCoroutine(StopParticle());
+
             _player.RestoreHP(health);
             _player.ChangeValueBar(-health);
         }
@@ -73,6 +80,15 @@ public class Abilities : MonoBehaviour
         }
 
         _isStartRealoadHealingValue = false;
+    }
+
+    private IEnumerator StopParticle()
+    {
+        WaitForSeconds waitFor = new WaitForSeconds(_waitForSecondsStopParticle);
+
+        yield return waitFor;
+
+        _healPartical.gameObject.SetActive(false);
     }
     #endregion
 
